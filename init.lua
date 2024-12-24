@@ -967,3 +967,19 @@ require('lazy').setup({
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+
+-- Function to fix pasting from windows copy and remove trailing whitespace
+function Trim()
+  local save = vim.fn.winsaveview()
+  vim.cmd 'keeppatterns %s/\\s\\+$\\|\\r$//e'
+  vim.fn.winrestview(save)
+end
+
+function Paste_and_trim()
+  -- Perform the default paste action
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('p', true, false, true), 'n', false)
+  -- Call the trim function
+  vim.schedule(function()
+    Trim()
+  end)
+end
