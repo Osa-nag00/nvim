@@ -660,6 +660,8 @@ require('lazy').setup({
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
+        ensure_installed = {},
+        automatic_installation = {},
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
@@ -937,7 +939,7 @@ require('lazy').setup({
   --    This is the easiest way to modularize your config.
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
@@ -966,20 +968,4 @@ require('lazy').setup({
 })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
-
--- Function to fix pasting from windows copy and remove trailing whitespace
-function Trim()
-  local save = vim.fn.winsaveview()
-  vim.cmd 'keeppatterns %s/\\s\\+$\\|\\r$//e'
-  vim.fn.winrestview(save)
-end
-
-function Paste_and_trim()
-  -- Perform the default paste action
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('p', true, false, true), 'n', false)
-  -- Call the trim function
-  vim.schedule(function()
-    Trim()
-  end)
-end
+-- vim: ts=4
