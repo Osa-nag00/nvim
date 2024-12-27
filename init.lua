@@ -967,5 +967,7 @@ require('lazy').setup({
   },
 })
 
+-- NOTE: these are my custom plugins
+require('pastefix').setup()
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=4
