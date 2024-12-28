@@ -25,5 +25,5 @@ return {
   },
 
   -- setting keymap for lazy git
-  vim.keymap.set('n', '<leader>lg', '<cmd>LazyGit<cr>', { desc = 'open [L]azy [G]it' }),
+  vim.keymap.set('n', '<leader>lg', '<cmd>LazyGit<cr>', { desc = '[L]azy [G]it' }),
 }
