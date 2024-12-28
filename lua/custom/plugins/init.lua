@@ -22,8 +22,10 @@ return {
     -- keys = {
     --   { '<leader>lg', '<cmd>LazyGit<cr>', desc = 'LazyGit' },
     -- },
+    -- setting keymap for lazy git
+    vim.keymap.set('n', '<leader>lg', '<cmd>LazyGit<cr>', { desc = '[L]azy [G]it' }),
   },
 
-  -- setting keymap for lazy git
-  vim.keymap.set('n', '<leader>lg', '<cmd>LazyGit<cr>', { desc = '[L]azy [G]it' }),
+  -- gen doc text for current line
+  { 'kkoomen/vim-doge', vim.keymap.set('n', '<Leader>dd', '<Plug>(doge-generate)') },
 }
