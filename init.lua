@@ -658,6 +658,7 @@ require('lazy').setup({
         'stylua', -- used to format lua code
         'prettier', -- used to format js/ts code
         'black', -- used to format python
+        'isort', -- used to format python as well
         'ast-grep', -- used to format c/c++
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
@@ -714,10 +715,9 @@ require('lazy').setup({
       formatters_by_ft = {
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
-        --
+        python = { 'isort', 'black' },
+        javascript = { 'prettier', stop_after_first = true },
         -- You can use 'stop_after_first' to run the first available formatter from the list
-        -- javascript = { "prettierd", "prettier", stop_after_first = true },
       },
     },
   },
@@ -943,6 +943,8 @@ require('lazy').setup({
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   { import = 'custom.plugins' },
+
+  { 'prichrd/netrw.nvim', opts = {} },
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
