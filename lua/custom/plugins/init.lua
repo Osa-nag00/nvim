@@ -108,19 +108,29 @@ return {
     end,
   },
 
+  -- plugin for nvim-tree
   {
-    'prichrd/netrw.nvim',
-    opts = {
-
-      -- File icons to use when `use_devicons` is false or if
-      -- no icon is found for the given file type.
-      icons = {
-        symlink = '',
-        directory = '',
-        file = '',
-      },
-      -- Uses mini.icon or nvim-web-devicons if true, otherwise use the file icon specified above
-      use_devicons = true,
+    'nvim-tree/nvim-tree.lua',
+    version = '*',
+    lazy = false,
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
     },
+    config = function()
+      require('nvim-tree').setup {
+        sort = {
+          sorter = 'case_sensitive',
+        },
+        view = {
+          width = 30,
+        },
+        renderer = {
+          group_empty = true,
+        },
+        filters = {
+          dotfiles = true,
+        },
+      }
+    end,
   },
 }
