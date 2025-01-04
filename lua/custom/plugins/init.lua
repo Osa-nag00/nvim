@@ -125,7 +125,48 @@ return {
           width = 30,
         },
         renderer = {
-          group_empty = true,
+          group_empty = false,
+          icons = {
+            web_devicons = {
+              file = {
+                enable = true,
+                color = true,
+              },
+              folder = {
+                enable = false,
+                color = true,
+              },
+            },
+            glyphs = {
+              default = '',
+              symlink = '',
+              bookmark = '󰆤',
+              modified = '●',
+              hidden = '󰜌',
+              folder = {
+                arrow_closed = '',
+                arrow_open = '',
+                default = '',
+                open = '',
+                empty = '',
+                empty_open = '',
+                symlink = '',
+                symlink_open = '',
+              },
+              git = {
+                unstaged = '✗',
+                staged = '✓',
+                unmerged = '',
+                renamed = '➜',
+                untracked = '★',
+                deleted = '',
+                ignored = '◌',
+              },
+            },
+          },
+        },
+        filters = {
+          git_ignored = true,
         },
       }
     end,
