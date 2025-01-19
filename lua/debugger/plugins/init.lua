@@ -31,24 +31,41 @@ return {
       vim.fn.sign_define('DapStopped', { text = '', texthl = 'DapStopped', linehl = 'DapStopped', numhl = 'DapStopped' })
 
       -- start of dap configs for c/c++/rust
-      -- dap.adapters.gdb = {
-      --   type = 'executable',
-      --   command = 'gdb',
-      --   args = { '--interpreter=dap', '--eval-command', 'set print pretty on' },
-      -- }
 
-      dap.configurations.c = {
+      -- NOTE: this adapters is from a vscode extension https://github.com/Microsoft/vscode-cpptools
+      -- NOTE: the command option should be set to OpenDebugAD7 inside of 'extension/debugAdapters/bin/OpenDebugAD7'
+      dap.adapters.cppdbg = {
+        id = 'cppdbg',
+        type = 'executable',
+        command = '/home/onaghise/.config/vscodeExtUsedInNvim/cpptools-linux-x64/extension/debugAdapters/bin/OpenDebugAD7',
+      }
+
+      dap.configurations.cpp = {
         {
-          name = 'Launch',
-          type = 'gdb',
+          name = 'Launch file',
+          type = 'cppdbg',
           request = 'launch',
           program = function()
             return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
           end,
           cwd = '${workspaceFolder}',
-          stopAtBeginningOfMainSubprogram = false,
+          stopAtEntry = true,
+
+          -- TODO: double check that this work at some point
+          setupCommands = {
+            {
+              text = '-enable-pretty-printing',
+              description = 'enable pretty printing',
+              ignoreFailures = false,
+            },
+          },
         },
       }
+
+      -- c and rust configs resuse the cpp config from above
+      dap.configurations.c = dap.configurations.cpp
+      dap.configurations.rust = dap.configurations.cpp
+
       -- end of dap configs for c/c++/rust
     end,
   },
@@ -57,7 +74,7 @@ return {
   {
     'theHamsta/nvim-dap-virtual-text',
     config = function()
-      require('nvim-dap-virtual-text').setup()
+      require('nvim-dap-virtual-text').setup { enabled = true }
     end,
   },
 
