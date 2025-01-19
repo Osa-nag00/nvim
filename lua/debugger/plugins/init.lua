@@ -79,6 +79,7 @@ return {
   },
 
   -- plugin for dap UI
+  -- Closes Nvim tree when Debugging starts, re opens after
   {
     'rcarriga/nvim-dap-ui',
     dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' },
@@ -87,18 +88,19 @@ return {
 
       dap.listeners.before.attach.dapui_config = function()
         dapui.open()
+        vim.cmd 'NvimTreeClose'
       end
       dap.listeners.before.launch.dapui_config = function()
         dapui.open()
+        vim.cmd 'NvimTreeClose'
       end
       dap.listeners.before.event_terminated.dapui_config = function()
         dapui.close()
-        vim.cmd 'NvimTreeResize 30'
+        vim.cmd 'NvimTreeOpen'
       end
       dap.listeners.before.event_exited.dapui_config = function()
         dapui.close()
-
-        vim.cmd 'NvimTreeResize 30'
+        vim.cmd 'NvimTreeOpen'
       end
 
       require('dapui').setup()
