@@ -42,6 +42,7 @@ return {
         -- NOTE: for uncrustify to work it's config file need to be at $HOME/.uncrustify.cfg
         c = { 'uncrustify' },
         cpp = { 'uncrustify' },
+        rust = { 'rustfmt' },
         -- You can use 'stop_after_first' to run the first available formatter from the list
       },
     },

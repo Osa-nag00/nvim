@@ -185,6 +185,16 @@ return {
         clangd = {
           cmd = { 'clangd' },
         },
+
+        rust_analyzer = {
+          settings = {
+            ['rust-analyzer'] = {
+              diagnostics = {
+                enable = false,
+              },
+            },
+          },
+        },
         -- gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
