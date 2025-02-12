@@ -185,19 +185,8 @@ return {
         clangd = {
           cmd = { 'clangd' },
         },
-
-        rust_analyzer = {
-          settings = {
-            ['rust-analyzer'] = {
-              diagnostics = {
-                enable = false,
-              },
-            },
-          },
-        },
         -- gopls = {},
         -- pyright = {},
-        -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -252,5 +241,12 @@ return {
         },
       }
     end,
+  },
+
+  -- plugin for rust handles lsp and some other stuff
+  {
+    'mrcjkb/rustaceanvim',
+    version = '^5', -- Recommended
+    lazy = false, -- This plugin is already lazy
   },
 }
