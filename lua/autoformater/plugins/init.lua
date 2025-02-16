@@ -36,7 +36,8 @@ return {
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
         python = { 'isort', 'black' },
-        javascript = { 'prettier', stop_after_first = true },
+        javascript = { 'prettierd', stop_after_first = true },
+        typescript = { 'prettierd', stop_after_first = true },
         json = { 'jq' }, -- needed to format json
 
         -- NOTE: for uncrustify to work it's config file need to be at $HOME/.uncrustify.cfg

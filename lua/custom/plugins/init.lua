@@ -180,4 +180,11 @@ return {
     -- use opts = {} for passing setup options
     -- this is equivalent to setup({}) function
   },
+
+  -- show keys on screen with :Screenkey
+  {
+    'NStefan002/screenkey.nvim',
+    lazy = false,
+    version = '*', -- or branch = "dev", to use the latest commit
+  },
 }
