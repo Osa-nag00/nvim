@@ -185,7 +185,9 @@ return {
         clangd = {
           cmd = { 'clangd' },
         },
-        eslint = {},
+        eslint = {
+          settings = { format = false },
+        },
         tailwindcss = {},
         html = {
           filetypes = {
@@ -199,6 +201,9 @@ return {
             'vue',
             'svelte',
             'templ',
+          },
+          init_options = {
+            provideFormatter = false,
           },
         },
         -- gopls = {},
