@@ -464,6 +464,10 @@ require('lazy').setup({
           {
             'rafamadriz/friendly-snippets',
             config = function()
+              local js_ts_files = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' }
+              for _, value in ipairs(js_ts_files) do
+                require('luasnip').filetype_extend(value, { 'html' })
+              end
               require('luasnip.loaders.from_vscode').lazy_load()
             end,
           },
