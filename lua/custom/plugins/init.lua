@@ -39,7 +39,7 @@ return {
     },
 
     -- these keymaps work with whats in the yank buffer
-    vim.keymap.set('n', 's', "<cmd>lua require('substitute').operator()<cr>", { noremap = true }),
+    vim.keymap.set('n', 's', '', { noremap = true }),
     vim.keymap.set('n', 'ss', "<cmd>lua require('substitute').line()<cr>", { noremap = true }),
     vim.keymap.set('n', 'S', "<cmd>lua require('substitute').eol()<cr>", { noremap = true }),
 
@@ -186,5 +186,13 @@ return {
     'NStefan002/screenkey.nvim',
     lazy = false,
     version = '*', -- or branch = "dev", to use the latest commit
+  },
+
+  -- lua with lazy.nvim
+  {
+    'max397574/better-escape.nvim',
+    config = function()
+      require('better_escape').setup()
+    end,
   },
 }
