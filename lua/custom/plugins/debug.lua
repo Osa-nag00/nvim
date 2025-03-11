@@ -1,131 +1,213 @@
+-- debug.lua
+--
+-- Shows how to use the DAP plugin to debug your code.
+--
+-- Primarily focused on configuring the debugger for Go, but can
+-- be extended to other languages as well. That's why it's called
+-- kickstart.nvim and not kitchen-sink.nvim ;)
+
 return {
+  -- NOTE: Yes, you can install new plugins here!
+  'mfussenegger/nvim-dap',
+  -- NOTE: And you can specify dependencies as well
+  dependencies = {
+    -- Creates a beautiful debugger UI
+    'rcarriga/nvim-dap-ui',
 
-  -- plugin for nvim dap
-  {
-    'mfussenegger/nvim-dap',
-    config = function()
-      local dap = require 'dap'
+    -- Required dependency for nvim-dap-ui
+    'nvim-neotest/nvim-nio',
 
-      vim.keymap.set('n', '<F5>', function()
+    -- Installs the debug adapters for you
+    'williamboman/mason.nvim',
+    'jay-babu/mason-nvim-dap.nvim',
+
+    -- virtual text while debugging
+    'theHamsta/nvim-dap-virtual-text',
+
+    -- Add your own debuggers here
+    'leoluz/nvim-dap-go',
+    'mfussenegger/nvim-dap-python',
+  },
+  keys = {
+    -- Basic debugging keymaps, feel free to change to your liking!
+    {
+      '<ESC>',
+      function()
+        require('dap').disconnect()
+        require('dapui').close()
+        vim.cmd 'NvimTreeOpen'
+      end,
+    },
+    {
+      '<F5>',
+      function()
         require('dap').continue()
-      end)
-      vim.keymap.set('n', '<F6>', function()
+      end,
+      desc = 'Debug: Start/Continue',
+    },
+    {
+      '<F1>',
+      function()
         require('dap').step_into()
-      end)
-      vim.keymap.set('n', '<F7>', function()
+      end,
+      desc = 'Debug: Step Into',
+    },
+    {
+      '<F2>',
+      function()
         require('dap').step_over()
-      end)
-      vim.keymap.set('n', '<F8>', function()
+      end,
+      desc = 'Debug: Step Over',
+    },
+    {
+      '<F3>',
+      function()
         require('dap').step_out()
-      end)
-      vim.keymap.set('n', '<M-b>', function()
+      end,
+      desc = 'Debug: Step Out',
+    },
+    {
+      '<leader>b',
+      function()
         require('dap').toggle_breakpoint()
-      end)
+      end,
+      desc = 'Debug: Toggle Breakpoint',
+    },
+    {
+      '<leader>B',
+      function()
+        require('dap').set_breakpoint(vim.fn.input 'Breakpoint condition: ')
+      end,
+      desc = 'Debug: Set Breakpoint',
+    },
+    -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
+    {
+      '<F7>',
+      function()
+        require('dapui').toggle()
+      end,
+      desc = 'Debug: See last session result.',
+    },
+  },
+  config = function()
+    local dap = require 'dap'
+    local dapui = require 'dapui'
 
-      -- altering the styles of dap visuals
-      vim.fn.sign_define('DapBreakpoint', { text = '', texthl = 'DapBreakpoint', linehl = 'DapBreakpoint', numhl = 'DapBreakpoint' })
-      vim.fn.sign_define('DapBreakpointCondition', { text = 'ﳁ', texthl = 'DapBreakpoint', linehl = 'DapBreakpoint', numhl = 'DapBreakpoint' })
-      vim.fn.sign_define('DapBreakpointRejected', { text = '', texthl = 'DapBreakpoint', linehl = 'DapBreakpoint', numhl = 'DapBreakpoint' })
-      vim.fn.sign_define('DapLogPoint', { text = '', texthl = 'DapLogPoint', linehl = 'DapLogPoint', numhl = 'DapLogPoint' })
-      vim.fn.sign_define('DapStopped', { text = '', texthl = 'DapStopped', linehl = 'DapStopped', numhl = 'DapStopped' })
+    -- enabling virtual text while debugging
+    require('nvim-dap-virtual-text').setup { enabled = true }
 
-      -- start of dap configs for c/c++/rust
+    require('mason-nvim-dap').setup {
+      -- Makes a best effort to setup the various debuggers with
+      -- reasonable debug configurations
+      automatic_installation = true,
 
-      -- NOTE: this adapters is from a vscode extension https://github.com/Microsoft/vscode-cpptools
-      -- NOTE: the command option should be set to OpenDebugAD7 inside of 'extension/debugAdapters/bin/OpenDebugAD7'
-      dap.adapters.cppdbg = {
-        id = 'cppdbg',
-        type = 'executable',
-        command = '/home/onaghise/.config/vscodeExtUsedInNvim/cpptools-linux-x64/extension/debugAdapters/bin/OpenDebugAD7',
-      }
+      -- You can provide additional configuration to the handlers,
+      -- see mason-nvim-dap README for more information
+      handlers = {},
 
-      dap.configurations.cpp = {
-        {
-          name = 'Launch file',
-          type = 'cppdbg',
-          request = 'launch',
-          program = function()
-            return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-          end,
-          cwd = '${workspaceFolder}',
-          stopAtEntry = true,
+      -- You'll need to check that you have the required things installed
+      -- online, please don't ask me how to install them :)
+      ensure_installed = {
+        -- Update this to ensure that you have the debuggers for the langs you want
+        'delve',
+      },
+    }
 
-          -- TODO: double check that this work at some point
-          setupCommands = {
-            {
-              text = '-enable-pretty-printing',
-              description = 'enable pretty printing',
-              ignoreFailures = false,
-            },
+    -- Dap UI setup
+    -- For more information, see |:help nvim-dap-ui|
+    dapui.setup {
+      -- Set icons to characters that are more likely to work in every terminal.
+      --    Feel free to remove or use ones that you like more! :)
+      --    Don't feel like these are good choices.
+      icons = { expanded = '▾', collapsed = '▸', current_frame = '*' },
+      controls = {
+        icons = {
+          pause = '⏸',
+          play = '▶',
+          step_into = '⏎',
+          step_over = '⏭',
+          step_out = '⏮',
+          step_back = 'b',
+          run_last = '▶▶',
+          terminate = '⏹',
+          disconnect = '⏏',
+        },
+      },
+    }
+
+    -- Change breakpoint icons
+    vim.api.nvim_set_hl(0, 'DapBreak', { fg = '#e51400' })
+    vim.api.nvim_set_hl(0, 'DapStop', { fg = '#ffcc00' })
+    local breakpoint_icons = vim.g.have_nerd_font
+        and { Breakpoint = '', BreakpointCondition = '', BreakpointRejected = '', LogPoint = '', Stopped = '' }
+      or { Breakpoint = '●', BreakpointCondition = '⊜', BreakpointRejected = '⊘', LogPoint = '◆', Stopped = '⭔' }
+    for type, icon in pairs(breakpoint_icons) do
+      local tp = 'Dap' .. type
+      local hl = (type == 'Stopped') and 'DapStop' or 'DapBreak'
+      vim.fn.sign_define(tp, { text = icon, texthl = hl, numhl = hl })
+    end
+
+    dap.listeners.before.attach.dapui_config = function()
+      dapui.open()
+      vim.cmd 'NvimTreeClose'
+    end
+    dap.listeners.before.launch.dapui_config = function()
+      dapui.open()
+      vim.cmd 'NvimTreeClose'
+    end
+    dap.listeners.before.event_terminated.dapui_config = function()
+      dapui.close()
+      vim.cmd 'NvimTreeOpen'
+    end
+    dap.listeners.before.event_exited.dapui_config = function()
+      dapui.close()
+      vim.cmd 'NvimTreeOpen'
+    end
+
+    -- NOTE: this adapters is from a vscode extension https://github.com/Microsoft/vscode-cpptools
+    -- NOTE: the command option should be set to OpenDebugAD7 inside of 'extension/debugAdapters/bin/OpenDebugAD7'
+    dap.adapters.cppdbg = {
+      id = 'cppdbg',
+      type = 'executable',
+      command = '/home/onaghise/.config/vscodeExtUsedInNvim/cpptools-linux-x64/extension/debugAdapters/bin/OpenDebugAD7',
+    }
+
+    dap.configurations.cpp = {
+      {
+        name = 'Launch file',
+        type = 'cppdbg',
+        request = 'launch',
+        program = function()
+          return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+        end,
+        cwd = '${workspaceFolder}',
+        stopAtEntry = true,
+
+        -- TODO: double check that this work at some point
+        setupCommands = {
+          {
+            text = '-enable-pretty-printing',
+            description = 'enable pretty printing',
+            ignoreFailures = false,
           },
         },
-      }
+      },
+    }
 
-      -- c and rust configs resuse the cpp config from above
-      dap.configurations.c = dap.configurations.cpp
-      dap.configurations.rust = dap.configurations.cpp
+    -- c and rust configs resuse the cpp config from above
+    dap.configurations.c = dap.configurations.cpp
+    dap.configurations.rust = dap.configurations.cpp
 
-      -- end of dap configs for c/c++/rust
-    end,
-  },
+    -- Setup python dap
+    require('dap-python').setup 'python3'
 
-  -- plugin to add virtual text support next to src code when debugging
-  {
-    'theHamsta/nvim-dap-virtual-text',
-    config = function()
-      require('nvim-dap-virtual-text').setup { enabled = true }
-    end,
-  },
-
-  -- plugin for dap UI
-  -- Closes Nvim tree when Debugging starts, re opens after
-  {
-    'rcarriga/nvim-dap-ui',
-    dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' },
-    config = function()
-      local dap, dapui = require 'dap', require 'dapui'
-
-      dap.listeners.before.attach.dapui_config = function()
-        dapui.open()
-        vim.cmd 'NvimTreeClose'
-      end
-      dap.listeners.before.launch.dapui_config = function()
-        dapui.open()
-        vim.cmd 'NvimTreeClose'
-      end
-      dap.listeners.before.event_terminated.dapui_config = function()
-        dapui.close()
-        vim.cmd 'NvimTreeOpen'
-      end
-      dap.listeners.before.event_exited.dapui_config = function()
-        dapui.close()
-        vim.cmd 'NvimTreeOpen'
-      end
-
-      require('dapui').setup()
-    end,
-  },
-
-  -- NOTE: this also needs to be loaded after mason has been loaded
-  -- pluging mason integration with nvim dap
-  {
-    'jay-babu/mason-nvim-dap.nvim',
-    config = function()
-      require('mason-nvim-dap').setup {
-        ensure_installed = {},
-        handlers = {},
-        automatic_installation = false,
-      }
-    end,
-  },
-
-  -- NOTE: Below is for language specific daps
-
-  -- plugin for dap for python
-  {
-    'mfussenegger/nvim-dap-python',
-    config = function()
-      require('dap-python').setup 'python3'
-    end,
-  },
+    -- Install golang specific config
+    require('dap-go').setup {
+      delve = {
+        -- On Windows delve must be run attached or it crashes.
+        -- See https://github.com/leoluz/nvim-dap-go/blob/main/README.md#configuring
+        detached = vim.fn.has 'win32' == 0,
+      },
+    }
+  end,
 }

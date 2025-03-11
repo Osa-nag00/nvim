@@ -1,0 +1,132 @@
+return {}
+-- return {
+--
+--   -- plugin for nvim dap
+--   {
+--     'mfussenegger/nvim-dap',
+--     config = function()
+--       local dap = require 'dap'
+--
+--       vim.keymap.set('n', '<F5>', function()
+--         require('dap').continue()
+--       end)
+--       vim.keymap.set('n', '<F6>', function()
+--         require('dap').step_into()
+--       end)
+--       vim.keymap.set('n', '<F7>', function()
+--         require('dap').step_over()
+--       end)
+--       vim.keymap.set('n', '<F8>', function()
+--         require('dap').step_out()
+--       end)
+--       vim.keymap.set('n', '<M-b>', function()
+--         require('dap').toggle_breakpoint()
+--       end)
+--
+--       -- altering the styles of dap visuals
+--       vim.fn.sign_define('DapBreakpoint', { text = '', texthl = 'DapBreakpoint', linehl = 'DapBreakpoint', numhl = 'DapBreakpoint' })
+--       vim.fn.sign_define('DapBreakpointCondition', { text = 'ﳁ', texthl = 'DapBreakpoint', linehl = 'DapBreakpoint', numhl = 'DapBreakpoint' })
+--       vim.fn.sign_define('DapBreakpointRejected', { text = '', texthl = 'DapBreakpoint', linehl = 'DapBreakpoint', numhl = 'DapBreakpoint' })
+--       vim.fn.sign_define('DapLogPoint', { text = '', texthl = 'DapLogPoint', linehl = 'DapLogPoint', numhl = 'DapLogPoint' })
+--       vim.fn.sign_define('DapStopped', { text = '', texthl = 'DapStopped', linehl = 'DapStopped', numhl = 'DapStopped' })
+--
+--       -- start of dap configs for c/c++/rust
+--
+--       -- NOTE: this adapters is from a vscode extension https://github.com/Microsoft/vscode-cpptools
+--       -- NOTE: the command option should be set to OpenDebugAD7 inside of 'extension/debugAdapters/bin/OpenDebugAD7'
+--       dap.adapters.cppdbg = {
+--         id = 'cppdbg',
+--         type = 'executable',
+--         command = '/home/onaghise/.config/vscodeExtUsedInNvim/cpptools-linux-x64/extension/debugAdapters/bin/OpenDebugAD7',
+--       }
+--
+--       dap.configurations.cpp = {
+--         {
+--           name = 'Launch file',
+--           type = 'cppdbg',
+--           request = 'launch',
+--           program = function()
+--             return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+--           end,
+--           cwd = '${workspaceFolder}',
+--           stopAtEntry = true,
+--
+--           -- TODO: double check that this work at some point
+--           setupCommands = {
+--             {
+--               text = '-enable-pretty-printing',
+--               description = 'enable pretty printing',
+--               ignoreFailures = false,
+--             },
+--           },
+--         },
+--       }
+--
+--       -- c and rust configs resuse the cpp config from above
+--       dap.configurations.c = dap.configurations.cpp
+--       dap.configurations.rust = dap.configurations.cpp
+--
+--       -- end of dap configs for c/c++/rust
+--     end,
+--   },
+--
+--   -- plugin to add virtual text support next to src code when debugging
+--   {
+--     'theHamsta/nvim-dap-virtual-text',
+--     config = function()
+--       require('nvim-dap-virtual-text').setup { enabled = true }
+--     end,
+--   },
+--
+--   -- plugin for dap UI
+--   -- Closes Nvim tree when Debugging starts, re opens after
+--   {
+--     'rcarriga/nvim-dap-ui',
+--     dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' },
+--     config = function()
+--       local dap, dapui = require 'dap', require 'dapui'
+--
+--       dap.listeners.before.attach.dapui_config = function()
+--         dapui.open()
+--         vim.cmd 'NvimTreeClose'
+--       end
+--       dap.listeners.before.launch.dapui_config = function()
+--         dapui.open()
+--         vim.cmd 'NvimTreeClose'
+--       end
+--       dap.listeners.before.event_terminated.dapui_config = function()
+--         dapui.close()
+--         vim.cmd 'NvimTreeOpen'
+--       end
+--       dap.listeners.before.event_exited.dapui_config = function()
+--         dapui.close()
+--         vim.cmd 'NvimTreeOpen'
+--       end
+--
+--       require('dapui').setup()
+--     end,
+--   },
+--
+--   -- NOTE: this also needs to be loaded after mason has been loaded
+--   -- pluging mason integration with nvim dap
+--   {
+--     'jay-babu/mason-nvim-dap.nvim',
+--     config = function()
+--       require('mason-nvim-dap').setup {
+--         ensure_installed = {},
+--         handlers = {},
+--         automatic_installation = false,
+--       }
+--     end,
+--   },
+--
+--   -- NOTE: Below is for language specific daps
+--
+--   -- plugin for dap for python
+--   {
+--     'mfussenegger/nvim-dap-python',
+--     config = function()
+--       require('dap-python').setup 'python3'
+--     end,
+--   },
+-- }
