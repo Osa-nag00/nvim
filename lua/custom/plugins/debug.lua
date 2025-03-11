@@ -1,4 +1,3 @@
--- this custom init file is for debugger plugins and things related to that nature
 return {
 
   -- plugin for nvim dap

@@ -1,4 +1,3 @@
--- Random custom plugin for leet code intergration into nvim, I don't want to use the site :)
 return {
   {
     'kawre/leetcode.nvim',

@@ -147,6 +147,7 @@ vim.opt.rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
+  -- /home/onaghise/.editorconfig <- config for this lives here
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
   -- NOTE: Plugins can also be added by using a table,
@@ -582,11 +583,11 @@ require('lazy').setup({
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   { import = 'custom.plugins' },
-  { import = 'debugger.plugins' }, -- TODO: work on setting this up at a later date
-  { import = 'leetcode.plugins' },
-  { import = 'lsp.plugins' },
-  { import = 'autoformater' },
-  { import = 'frontend.plugins' },
+  -- { import = 'debugger.plugins' }, -- TODO: work on setting this up at a later date
+  -- { import = 'leetcode.plugins' },
+  -- { import = 'lsp.plugins' },
+  -- { import = 'autoformater' },
+  -- { import = 'frontend.plugins' },
 
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!

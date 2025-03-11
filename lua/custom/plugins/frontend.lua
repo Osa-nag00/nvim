@@ -1,5 +1,3 @@
--- Plugins for anything related to frontend dev stuff
-
 return {
   {
     'windwp/nvim-ts-autotag',

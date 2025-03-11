@@ -264,7 +264,7 @@ return {
     end,
   },
 
-  -- plugin for rust handles lsp and some other stuff
+  -- plugin for rust lsp, handles and some other stuff too
   {
     'mrcjkb/rustaceanvim',
     version = '^5', -- Recommended
