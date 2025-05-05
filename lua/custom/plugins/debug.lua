@@ -30,14 +30,14 @@ return {
   },
   keys = {
     -- Basic debugging keymaps, feel free to change to your liking!
-    {
-      '<ESC>',
-      function()
-        require('dap').disconnect()
-        require('dapui').close()
-        vim.cmd 'NvimTreeOpen'
-      end,
-    },
+    -- {
+    --   '<ESC>',
+    --   function()
+    --     require('dap').disconnect()
+    --     require('dapui').close()
+    --     vim.cmd 'NvimTreeOpen'
+    --   end,
+    -- },
     {
       '<F5>',
       function()
