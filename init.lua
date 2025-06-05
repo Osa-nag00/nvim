@@ -104,15 +104,28 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
-
--- Highlight when yanking (copying) text
---  Try it with `yap` in normal mode
---  See `:help vim.highlight.on_yank()`
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
   callback = function()
     vim.highlight.on_yank()
+  end,
+})
+
+-- TODO: see if this can be moved into csv view plugin file
+-- Getting error when trying to do that
+vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
+  pattern = '*.csv',
+  callback = function()
+    -- set nowrap
+    vim.wo.wrap = false
+
+    -- enabled csvview with specific options
+    if not require('csvview').is_enabled(0) then
+      require('csvview').enable(0, {
+        view = { display_mode = 'border', header_lnum = 1, sticky_header = { enabled = true } },
+      })
+    end
   end,
 })
 
