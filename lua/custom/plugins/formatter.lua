@@ -40,7 +40,7 @@ return {
         typescript = { 'prettierd', stop_after_first = true },
         typescriptreact = { 'prettierd', stop_after_first = true },
         javascriptreact = { 'prettierd', stop_after_first = true },
-        json = { 'jq' }, -- needed to format json
+        json = { 'prettierd' }, -- needed to format json
 
         -- NOTE: for uncrustify to work it's config file need to be at $HOME/.uncrustify.cfg
         c = { 'uncrustify' },
@@ -50,7 +50,4 @@ return {
       },
     },
   },
-
-
-    
 }
