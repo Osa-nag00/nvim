@@ -1,3 +1,7 @@
+return {
+
+}
+
 -- return {
 --
 --   -- plugin for word subsitutions in buffers
