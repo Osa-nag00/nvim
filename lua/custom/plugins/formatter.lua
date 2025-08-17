@@ -34,19 +34,13 @@ return {
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        -- Conform can also run multiple formatters sequentially
-        python = { 'isort', 'black' },
+        python = { 'black' },
         javascript = { 'prettierd', stop_after_first = true },
         typescript = { 'prettierd', stop_after_first = true },
         typescriptreact = { 'prettierd', stop_after_first = true },
         javascriptreact = { 'prettierd', stop_after_first = true },
-        json = { 'prettierd' }, -- needed to format json
-
-        -- NOTE: for uncrustify to work it's config file need to be at $HOME/.uncrustify.cfg
-        c = { 'uncrustify' },
-        cpp = { 'uncrustify' },
+        json = { 'prettierd' },
         rust = { 'rustfmt' },
-        -- You can use 'stop_after_first' to run the first available formatter from the list
       },
     },
   },

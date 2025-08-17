@@ -20,5 +20,7 @@ return {
       },
     },
     cmd = { 'CsvViewEnable', 'CsvViewDisable', 'CsvViewToggle' },
-  },
+
+
+  }
 }
