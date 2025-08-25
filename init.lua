@@ -129,14 +129,6 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
   end,
 })
 
-vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
-  pattern = '*.*',
-  callback = function()
-    -- open nvim tree, only when curent buffer not active
-    vim.cmd 'NvimTreeClose'
-  end,
-})
-
 -- Auto commands for when a git conflict is detected and when its resolved
 vim.api.nvim_create_autocmd('User', {
   pattern = 'GitConflictDetected',
