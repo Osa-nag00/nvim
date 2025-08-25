@@ -13,7 +13,7 @@ return {
 
   vim.keymap.set('n', '<leader>o', function()
     local oil = require 'oil'
-    oil.open_float()
+    oil.open()
   end, { desc = '[O]pen Oil' }),
 
   vim.keymap.set('n', '<leader>oc', function()
