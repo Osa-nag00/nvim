@@ -216,7 +216,6 @@ return {
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
         --    https://github.com/pmizio/typescript-tools.nvim
-
         ts_ls = {},
         bashls = {},
         lua_ls = {
@@ -233,6 +232,7 @@ return {
             },
           },
         },
+        terraformls = {},
       }
 
       -- Ensure the servers and tools above are installed
