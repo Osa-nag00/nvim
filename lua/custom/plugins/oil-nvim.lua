@@ -18,8 +18,11 @@ return {
 
   vim.keymap.set('n', '<leader>oc', function()
     local oil = require 'oil'
-    oil.close {
-      exit_if_last_buf = true,
-    }
+    if vim.bo.filetype == 'oil' then
+      oil.close {}
+      vim.cmd 'Dashboard'
+      local bufId = vim.api.nvim_get_current_buf()
+      require('ibl').setup_buffer(bufId, { enabled = false })
+    end
   end, { desc = '[O]il Close' }),
 }
