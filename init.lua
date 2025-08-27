@@ -110,20 +110,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- TODO: see if this can be moved into csv view plugin file
 -- Getting error when trying to do that
-vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
-  pattern = '*.csv',
-  callback = function()
-    -- set nowrap
-    vim.wo.wrap = false
-
-    -- enabled csvview with specific options
-    if not require('csvview').is_enabled(0) then
-      require('csvview').enable(0, {
-        view = { display_mode = 'border', header_lnum = 1, sticky_header = { enabled = true } },
-      })
-    end
-  end,
-})
 
 -- Auto commands for when a git conflict is detected and when its resolved
 vim.api.nvim_create_autocmd('User', {
@@ -159,3 +145,9 @@ require('lazy').setup({
     icons = vim.g.have_nerd_font and {},
   },
 })
+
+-- TODO: Figure out how to load all color scheme stuff first
+-- This won't work when in the init function of dashboard plugin
+-- set colors for header and footer
+vim.cmd.highlight { 'DashboardHeader', 'guifg=#b7bdf8' }
+vim.cmd.highlight { 'DashboardFooter', 'guifg=#b7bdf8' }
