@@ -1,11 +1,10 @@
 return {
   'rcarriga/nvim-notify',
-
   config = function()
     require('notify').setup {
       merge_duplicates = true,
       background_colour = 'NotifyBackground',
-      fps = 30,
+      fps = 144,
       icons = {
         DEBUG = '',
         ERROR = '',

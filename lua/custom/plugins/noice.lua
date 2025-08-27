@@ -58,6 +58,10 @@ return {
             },
           },
         },
+        notify = {
+          enabled = true,
+          view = 'notify',
+        },
       }
     end,
   },

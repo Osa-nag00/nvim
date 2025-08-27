@@ -149,5 +149,6 @@ require('lazy').setup({
 -- TODO: Figure out how to load all color scheme stuff first
 -- This won't work when in the init function of dashboard plugin
 -- set colors for header and footer
+vim.cmd.colorscheme 'catppuccin'
 vim.cmd.highlight { 'DashboardHeader', 'guifg=#b7bdf8' }
 vim.cmd.highlight { 'DashboardFooter', 'guifg=#b7bdf8' }

@@ -1,7 +1,5 @@
 return {
   'nvimdev/dashboard-nvim',
-  lazy = false,
-  priority = 1,
 
   opts = {
     theme = 'hyper',
