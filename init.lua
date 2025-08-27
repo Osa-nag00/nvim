@@ -125,6 +125,14 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
   end,
 })
 
+-- Turn off ident lines for dashboard
+vim.api.nvim_create_autocmd('VimEnter', {
+  callback = function()
+    local bufId = vim.api.nvim_get_current_buf()
+    require('ibl').setup_buffer(bufId, { enabled = false })
+  end,
+})
+
 -- Auto commands for when a git conflict is detected and when its resolved
 vim.api.nvim_create_autocmd('User', {
   pattern = 'GitConflictDetected',
@@ -156,6 +164,6 @@ require('lazy').setup({
   { import = 'custom.plugins' },
 }, {
   ui = {
-    icons = vim.g.have_nerd_font and {}
+    icons = vim.g.have_nerd_font and {},
   },
 })
