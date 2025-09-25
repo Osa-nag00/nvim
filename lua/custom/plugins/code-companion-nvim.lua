@@ -20,12 +20,27 @@ end
 
 return {
   'olimorris/codecompanion.nvim',
-  opts = {
-    provider = 'copilot',
-    model = 'gpt-5',
-    enable_chat = true,
-    enable_code = true,
-  },
+  config = function()
+    require('codecompanion').setup {
+      provider = 'copilot',
+      enable_chat = true,
+      enable_code = true,
+      strategies = {
+        chat = {
+          adapter = {
+            name = 'copilot',
+            model = 'gpt-5',
+          },
+        },
+        inline = {
+          adapter = {
+            name = 'copilot',
+            model = 'gpt-5',
+          },
+        },
+      },
+    }
+  end,
   dependencies = {
     -- AI and utility plugins
     'github/copilot.vim',
