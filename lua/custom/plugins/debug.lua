@@ -26,7 +26,7 @@ return {
 
     -- Add your own debuggers here
     'leoluz/nvim-dap-go',
-    'mfussenegger/nvim-dap-python',
+    -- 'mfussenegger/nvim-dap-python',
   },
   keys = {
     -- Basic debugging keymaps, feel free to change to your liking!
@@ -199,7 +199,7 @@ return {
     dap.configurations.rust = dap.configurations.cpp
 
     -- Setup python dap
-    require('dap-python').setup 'python3'
+    -- require('dap-python').setup 'python3'
 
     -- Install golang specific config
     require('dap-go').setup {
