@@ -4,6 +4,12 @@ return {
   ---@type oil.SetupOpts
   opts = {
     default_file_explorer = true,
+    keymaps = {
+      ['<C-s>'] = false, -- disable splitting vertically
+      ['<C-h>'] = false, -- disable splitting horizontally
+      ['<C-l>'] = false, -- disable splitting refresh on ctrl-l
+      ['<C-r>'] = 'actions.refresh',
+    },
   },
   -- Optional dependencies
   -- dependencies = { { 'echasnovski/mini.icons', opts = {} } },
