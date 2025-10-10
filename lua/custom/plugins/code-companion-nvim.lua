@@ -1,7 +1,7 @@
 -- Markview configuration
 local markview_opts = {
   preview = {
-    filetypes = { 'markdown', 'codecompanion' },
+    filetypes = { 'codecompanion' },
     ignore_buftypes = {},
   },
   experimental = {
@@ -19,28 +19,39 @@ local function setup_mini_diff()
 end
 
 return {
+
   'olimorris/codecompanion.nvim',
-  config = function()
-    require('codecompanion').setup {
-      provider = 'copilot',
-      enable_chat = true,
-      enable_code = true,
-      strategies = {
-        chat = {
-          adapter = {
-            name = 'copilot',
-            model = 'gpt-5',
+  opts = {
+
+    provider = 'copilot',
+    enable_chat = true,
+    enable_code = true,
+    strategies = {
+      chat = {
+        variables = {
+          ['buffer'] = {
+            opts = {
+              default_params = 'pin', -- or 'watch'
+            },
           },
         },
-        inline = {
-          adapter = {
-            name = 'copilot',
-            model = 'gpt-5',
-          },
+        adapter = 'copilot',
+        opts = {
+          completion_provider = 'cmp',
         },
       },
-    }
-  end,
+      inline = {
+        adapter = 'copilot',
+      },
+    },
+    adapters = {
+      http = {
+        copilot = function()
+          return require('codecompanion.adapters').extend('copilot', { schema = { model = { default = 'gpt-5' } } })
+        end,
+      },
+    },
+  },
   dependencies = {
     -- AI and utility plugins
     'github/copilot.vim',
