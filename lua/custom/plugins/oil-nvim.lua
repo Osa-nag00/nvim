@@ -9,6 +9,7 @@ return {
       ['<C-h>'] = false, -- disable splitting horizontally
       ['<C-l>'] = false, -- disable splitting refresh on ctrl-l
       ['<C-r>'] = 'actions.refresh',
+      ['yp'] = 'actions.yank_entry',
     },
   },
   -- Optional dependencies
