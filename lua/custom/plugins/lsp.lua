@@ -189,24 +189,24 @@ return {
         eslint = {
           settings = { format = false },
         },
-        tailwindcss = {},
-        html = {
-          filetypes = {
-            'django-html',
-            'htmldjango',
-            'html',
-            'javascript',
-            'javascriptreact',
-            'typescript',
-            'typescriptreact',
-            'vue',
-            'svelte',
-            'templ',
-          },
-          init_options = {
-            provideFormatter = false,
-          },
-        },
+        -- tailwindcss = {},
+        -- html = {
+        --   filetypes = {
+        --     'django-html',
+        --     'htmldjango',
+        --     'html',
+        --     'javascript',
+        --     'javascriptreact',
+        --     'typescript',
+        --     'typescriptreact',
+        --     'vue',
+        --     'svelte',
+        --     'templ',
+        --   },
+        --   init_options = {
+        --     provideFormatter = false,
+        --   },
+        -- },
         -- gopls = {},
         -- pyright = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -269,4 +269,7 @@ return {
     version = '^5', -- Recommended
     lazy = false, -- This plugin is already lazy
   },
+
+  vim.lsp.enable { 'apex_ls', 'lwc_ls' },
+  vim.lsp.config('apex_ls', { apex_jar_path = '~/.local/bin/apex-jorje-lsp.jar' }),
 }
