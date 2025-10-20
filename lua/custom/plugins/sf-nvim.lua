@@ -8,7 +8,8 @@ return {
   },
 
   config = function()
-    require('sf').setup { terminal = 'overseer' }
-    require('overseer').setup()
+    require('sf').setup {}
   end,
+
+  vim.keymap.set('n', '<leader>stt', '<cmd>:SF term toggle<cr>', { desc = 'Close sf integrated terminal' }),
 }
