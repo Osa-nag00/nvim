@@ -35,6 +35,7 @@ return {
       formatters_by_ft = {
         lua = { 'stylua' },
         python = { 'black' },
+        html = { 'prettierd' },
         javascript = { 'prettierd', stop_after_first = true },
         typescript = { 'prettierd', stop_after_first = true },
         typescriptreact = { 'prettierd', stop_after_first = true },
