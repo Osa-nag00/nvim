@@ -21,15 +21,13 @@ return {
           --    https://github.com/rafamadriz/friendly-snippets
           {
             'rafamadriz/friendly-snippets',
-            config = function()
-              local js_ts_files = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' }
-              for _, value in ipairs(js_ts_files) do
-                require('luasnip').filetype_extend(value, { 'html' })
-                -- require('luasnip').filetype_extend(value, { 'javascript' })
-                -- require('luasnip').filetype_extend(value, { 'typescript' })
-              end
-              require('luasnip.loaders.from_vscode').lazy_load()
-            end,
+            -- config = function()
+            --   local js_ts_files = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' }
+            --   for _, value in ipairs(js_ts_files) do
+            --     require('luasnip').filetype_extend(value, { 'html' })
+            --   end
+            --   require('luasnip.loaders.from_vscode').lazy_load()
+            -- end,
           },
         },
       },

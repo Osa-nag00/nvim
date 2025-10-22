@@ -270,6 +270,6 @@ return {
     lazy = false, -- This plugin is already lazy
   },
 
-  vim.lsp.enable { 'apex_ls', 'lwc_ls' },
+  vim.lsp.enable { 'apex_ls', 'lwc_ls', 'cssls' },
   vim.lsp.config('apex_ls', { apex_jar_path = '~/.local/bin/apex-jorje-lsp.jar' }),
 }
