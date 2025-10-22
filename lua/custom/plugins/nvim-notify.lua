@@ -4,7 +4,7 @@ return {
     require('notify').setup {
       merge_duplicates = true,
       background_colour = 'NotifyBackground',
-      fps = 144,
+      fps = 10,
       icons = {
         DEBUG = '',
         ERROR = '',
