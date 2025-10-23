@@ -1,5 +1,3 @@
--- Come and finish configuration for this
-
 return {
   {
     'hat0uma/csvview.nvim',

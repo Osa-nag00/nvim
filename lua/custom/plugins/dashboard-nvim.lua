@@ -1,6 +1,6 @@
 return {
   'nvimdev/dashboard-nvim',
-  -- enabled = false,
+  enabled = false,
   opts = {
     theme = 'hyper',
     shortcut_type = 'letter',

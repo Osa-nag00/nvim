@@ -27,7 +27,6 @@ return {
     local oil = require 'oil'
     if vim.bo.filetype == 'oil' then
       oil.close {}
-      vim.cmd 'Dashboard'
       local bufId = vim.api.nvim_get_current_buf()
       require('ibl').setup_buffer(bufId, { enabled = false })
     end

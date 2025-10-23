@@ -154,26 +154,3 @@ require('lazy').setup({
 vim.cmd.colorscheme 'catppuccin'
 vim.cmd.highlight { 'DashboardHeader', 'guifg=#b7bdf8' }
 vim.cmd.highlight { 'DashboardFooter', 'guifg=#b7bdf8' }
-
--- Autocommand to open help files in a vertical split on the far right
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = 'help',
-  callback = function(ev)
-    -- Skip if this is a floating window
-    local win = vim.api.nvim_get_current_win()
-    local cfg = vim.api.nvim_win_get_config(win)
-    if cfg.relative ~= '' then
-      return
-    end
-
-    -- Move help window to the far right as a vertical split
-    vim.cmd 'wincmd L'
-
-    -- Optionally set a preferred width
-    local preferred_width = 120
-    pcall(vim.api.nvim_win_set_width, 0, preferred_width)
-
-    -- Prevent the help window from resizing too much
-    vim.wo.winfixwidth = true
-  end,
-})
