@@ -94,9 +94,16 @@ return {
       end,
 
       -- CONFIGS
+
+      vim.lsp.config('*', {
+        capabilities = vim.lsp.protocol.make_client_capabilities(),
+        root_markers = { '.git' },
+      }),
+
       vim.lsp.config('lua_ls', { settings = { Lua = { diagnostics = { globals = { 'vim' } } } } }),
       vim.lsp.config('apex_ls', { apex_jar_path = '~/.local/bin/apex-jorje-lsp.jar' }),
       vim.lsp.config('eslint', { format = false }),
+      vim.lsp.config('html', { filetypes = { 'email', 'html' } }),
     },
   },
 }
