@@ -102,6 +102,16 @@ return {
         vim.lsp.config('apex_ls', { apex_jar_path = '~/.local/bin/apex-jorje-lsp.jar' })
         vim.lsp.config('html', { filetypes = { 'email', 'html' } })
 
+        -- CUSTOM CONFIGS
+
+        -- For salesforce .email type files which are actaully just html
+        vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
+          pattern = { '*.email' },
+          callback = function()
+            vim.bo.filetype = 'html'
+          end,
+        })
+      end,
     },
   },
 }
