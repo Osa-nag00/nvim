@@ -1,5 +1,6 @@
 -- TODO Figure out how to make this work with my github enterprise stuff
 return {
+
   'CopilotC-Nvim/CopilotChat.nvim',
   branch = 'main',
   cmd = 'CopilotChat',
@@ -15,7 +16,11 @@ return {
       },
       window = {
         width = 0.4,
+        layout = 'vertical',
       },
+      model = 'gpt-5-mini',
+      temperature = 0.1,
+      insert_at_end = true,
     }
   end,
   keys = {
@@ -62,7 +67,6 @@ return {
   },
   config = function(_, opts)
     local chat = require 'CopilotChat'
-
     vim.api.nvim_create_autocmd('BufEnter', {
       pattern = 'copilot-chat',
       callback = function()
