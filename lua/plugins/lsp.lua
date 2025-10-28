@@ -99,8 +99,9 @@ return {
         })
 
         vim.lsp.config('lua_ls', { settings = { Lua = { diagnostics = { globals = { 'vim' } } } } })
-        vim.lsp.config('apex_ls', { apex_jar_path = '~/.local/bin/apex-jorje-lsp.jar' })
         vim.lsp.config('html', { filetypes = { 'email', 'html' } })
+        vim.lsp.config('apex_ls', { apex_jar_path = vim.fn.stdpath 'data' .. '/mason/share/apex-language-server/apex-jorje-lsp.jar' })
+        vim.lsp.enable 'apex_ls'
 
         -- CUSTOM CONFIGS
 
