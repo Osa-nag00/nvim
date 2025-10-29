@@ -93,10 +93,10 @@ return {
         })
 
         -- CONFIGS
-        vim.lsp.config('*', {
-          capabilities = vim.lsp.protocol.make_client_capabilities(),
-          root_markers = { '.git' },
-        })
+        -- vim.lsp.config('*', {
+        --   capabilities = vim.lsp.protocol.make_client_capabilities(),
+        --   root_markers = { '.git' },
+        -- })
 
         vim.lsp.config('lua_ls', { settings = { Lua = { diagnostics = { globals = { 'vim' } } } } })
         vim.lsp.config('html', { filetypes = { 'email', 'html' } })
