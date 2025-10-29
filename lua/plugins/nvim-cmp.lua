@@ -42,21 +42,19 @@ return {
         ['<C-y>'] = cmp.mapping.confirm { select = true }, -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
       },
 
-      sources = cmp.config.sources({
+      sources = cmp.config.sources {
         { name = 'nvim_lsp' },
         { name = 'mini_snippets' },
-      }, {
         { name = 'buffer' },
-      }),
+      },
     }
 
     cmp.setup.cmdline(':', {
       mapping = cmp.mapping.preset.cmdline(),
-      sources = cmp.config.sources({
+      sources = cmp.config.sources {
         { name = 'path' },
-      }, {
         { name = 'cmdline' },
-      }),
+      },
       matching = {
         disallow_symbol_nonprefix_matching = false,
         disallow_fuzzy_matching = false,
