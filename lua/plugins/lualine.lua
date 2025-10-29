@@ -9,7 +9,7 @@ return {
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   opts = {
     options = {
-      theme = 'palenight',
+      theme = 'catppuccin',
     },
     sections = { lualine_c = { 'filename', { printTargetOrg } } },
   },
