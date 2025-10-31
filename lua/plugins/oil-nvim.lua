@@ -11,9 +11,9 @@ return {
       ['<C-r>'] = 'actions.refresh',
       ['yp'] = 'actions.yank_entry',
     },
+    columns = { 'size', 'icon' },
   },
   -- Optional dependencies
-  -- dependencies = { { 'echasnovski/mini.icons', opts = {} } },
   dependencies = { 'nvim-tree/nvim-web-devicons', 'benomahony/oil-git.nvim' }, -- use if you prefer nvim-web-devicons
   -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
   lazy = false,
