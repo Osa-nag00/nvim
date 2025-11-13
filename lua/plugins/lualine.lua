@@ -11,6 +11,6 @@ return {
     options = {
       theme = 'catppuccin',
     },
-    sections = { lualine_c = { 'filename', { printTargetOrg } } },
+    sections = { lualine_a = { 'filename' }, lualine_c = { { printTargetOrg } } },
   },
 }
