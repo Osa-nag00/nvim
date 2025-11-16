@@ -5,8 +5,8 @@ return {
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
     'hrsh7th/cmp-cmdline',
-    { 'echasnovski/mini.snippets', version = '*', dependencies = { 'rafamadriz/friendly-snippets' } },
-    'abeldekat/cmp-mini-snippets',
+    'L3MON4D3/LuaSnip',
+    'saadparwaiz1/cmp_luasnip',
   },
   opts = function()
     vim.api.nvim_set_hl(0, 'CmpNormal', { bg = '#494d64' })
@@ -24,11 +24,7 @@ return {
     cmp.setup {
       snippet = {
         expand = function(args)
-          local insert = miniSnippets.config.expand.insert or miniSnippets.default_insert
-          -- TODO: come back and configure this maybe
-          insert { body = args.body, opts = {} } -- Insert at cursor
-          cmp.resubscribe { 'TextChangedI', 'TextChangedP' }
-          require('cmp.config').set_onetime { sources = {} }
+          require('luasnip').lsp_expand(args.body)
         end,
       },
 
@@ -44,8 +40,9 @@ return {
 
       sources = cmp.config.sources {
         { name = 'nvim_lsp' },
-        { name = 'mini_snippets' },
+        { name = 'luasnip' },
         { name = 'buffer' },
+        { name = 'path' },
       },
     }
 
