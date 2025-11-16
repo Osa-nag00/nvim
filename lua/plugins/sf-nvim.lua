@@ -67,5 +67,6 @@ return {
     vim.keymap.set('n', '<leader>ml', Sf.list_md_to_retrieve, { desc = 'List metadata to retrieve' })
     vim.keymap.set('n', '<leader>mt', Sf.list_md_type_to_retrieve, { desc = 'List metadata types to retrieve' })
     vim.keymap.set('n', '<leader>df', Sf.save_and_push, { desc = 'Save and then Deploy current file in buffer' })
+    vim.keymap.set('n', '<leader>rr', Sf.run_all_tests_in_this_file, { desc = 'Run Test in current file' })
   end,
 }
