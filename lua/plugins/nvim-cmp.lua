@@ -5,21 +5,16 @@ return {
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
     'hrsh7th/cmp-cmdline',
-    'L3MON4D3/LuaSnip',
+    { 'L3MON4D3/LuaSnip', version = 'v2.x', build = 'make install_jsregexp', dependencies = {
+      'rafamadriz/friendly-snippets',
+    } },
     'saadparwaiz1/cmp_luasnip',
   },
   opts = function()
     vim.api.nvim_set_hl(0, 'CmpNormal', { bg = '#494d64' })
-
     local cmp = require 'cmp'
-    local miniSnippets = require 'mini.snippets'
 
-    local gen_loader = miniSnippets.gen_loader
-    miniSnippets.setup {
-      snippets = {
-        gen_loader.from_lang {},
-      },
-    }
+    require('luasnip.loaders.from_vscode').lazy_load()
 
     cmp.setup {
       snippet = {
