@@ -102,8 +102,17 @@ return {
         vim.lsp.config('html', { filetypes = { 'email', 'html' } })
         vim.lsp.config('apex_ls', { apex_jar_path = vim.fn.stdpath 'data' .. '/mason/share/apex-language-server/apex-jorje-lsp.jar' })
         vim.lsp.enable 'apex_ls'
+        vim.lsp.enable 'docker_compose_language_service'
+        vim.lsp.enable 'dockerls'
 
         -- CUSTOM CONFIGS
+
+        vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
+          pattern = { 'docker-compose.yaml', 'compose.yaml' },
+          callback = function()
+            vim.bo.filetype = 'yaml.docker-compose'
+          end,
+        })
 
         -- For salesforce .email type files which are actaully just html
         vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
