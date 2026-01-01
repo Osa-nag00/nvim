@@ -16,10 +16,10 @@ return {
   opts = {
     notify_no_formatter = true,
     notify_on_error = true,
-    format_on_save = {
-      timeout_ms = 2500,
-      lsp_fallback = true,
-    },
+    -- format_on_save = {
+    --   timeout_ms = 2500,
+    --   lsp_fallback = true,
+    -- },
     -- format_on_save = function(bufnr)
     --   -- Disable "format_on_save lsp_fallback" for languages that don't
     --   -- have a well standardized coding style. You can add additional
@@ -48,6 +48,8 @@ return {
       javascriptreact = { 'prettierd', stop_after_first = true },
       json = { 'prettierd' },
       rust = { 'rustfmt' },
+      terraform = {'terraform_fmt'},
+      opentofu = {'tofu_fmt'}
     },
   },
 }
