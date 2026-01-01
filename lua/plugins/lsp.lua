@@ -99,11 +99,14 @@ return {
         -- })
 
         vim.lsp.config('lua_ls', { settings = { Lua = { diagnostics = { globals = { 'vim' } } } } })
-        vim.lsp.config('html', { filetypes = { 'email', 'html' } })
+        vim.lsp.config('html', { filetypes = { 'email', 'html', 'typescriptreact', 'javascriptreact' } })
         vim.lsp.config('apex_ls', { apex_jar_path = vim.fn.stdpath 'data' .. '/mason/share/apex-language-server/apex-jorje-lsp.jar' })
         vim.lsp.enable 'apex_ls'
         vim.lsp.enable 'docker_compose_language_service'
         vim.lsp.enable 'dockerls'
+        vim.lsp.enable 'terrafromls'
+        vim.lsp.enable 'tofu_ls'
+        vim.lsp.enable 'tailwindcss'
 
         -- CUSTOM CONFIGS
 
