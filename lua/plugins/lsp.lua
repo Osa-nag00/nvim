@@ -125,6 +125,12 @@ return {
           end,
         })
       end,
+      -- Added for gitlab lsp recognition
+      vim.filetype.add {
+        pattern = {
+          ['%.gitlab%-ci%.ya?ml'] = 'yaml.gitlab',
+        },
+      },
     },
   },
 }

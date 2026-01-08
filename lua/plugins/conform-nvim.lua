@@ -49,7 +49,8 @@ return {
       json = { 'prettierd' },
       rust = { 'rustfmt' },
       terraform = {'terraform_fmt'},
-      opentofu = {'tofu_fmt'}
+      opentofu = {'tofu_fmt'},
+      yaml = {'prettierd'}
     },
   },
 }
