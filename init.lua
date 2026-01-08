@@ -69,6 +69,9 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- Disables autocomments when create newline above or below
+vim.cmd([[autocmd FileType * set formatoptions-=ro]])
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
