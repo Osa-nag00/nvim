@@ -101,8 +101,6 @@ return {
         vim.lsp.config('lua_ls', { settings = { Lua = { diagnostics = { globals = { 'vim' } } } } })
         vim.lsp.config('html', { filetypes = { 'email', 'html', 'typescriptreact', 'javascriptreact' } })
         vim.lsp.config('apex_ls', { apex_jar_path = vim.fn.stdpath 'data' .. '/mason/share/apex-language-server/apex-jorje-lsp.jar' })
-        -- Make this only check for the script sections if possible
-        -- vim.lsp.config('bashls', {filetypes = {'yaml.gitlab'}})
         vim.lsp.enable 'apex_ls'
         vim.lsp.enable 'docker_compose_language_service'
         vim.lsp.enable 'dockerls'
@@ -111,8 +109,6 @@ return {
         vim.lsp.enable 'tailwindcss'
         vim.lsp.enable 'cssls'
         vim.lsp.enable 'somesass_ls'
-        vim.lsp.enable 'yamlls'
-        vim.lsp.enable 'pylsp'
 
         -- CUSTOM CONFIGS
 
@@ -135,11 +131,6 @@ return {
       vim.filetype.add {
         pattern = {
           ['%.gitlab%-ci%.ya?ml'] = 'yaml.gitlab',
-        },
-      },
-      vim.filetype.add {
-        pattern = {
-          ['./.cls'] = 'apex',
         },
       },
     },

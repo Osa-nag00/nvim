@@ -109,8 +109,6 @@ return {
         vim.lsp.enable 'terrafromls'
         vim.lsp.enable 'tofu_ls'
         vim.lsp.enable 'tailwindcss'
-        vim.lsp.enable 'cssls'
-        vim.lsp.enable 'somesass_ls'
         vim.lsp.enable 'yamlls'
         vim.lsp.enable 'pylsp'
 

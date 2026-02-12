@@ -109,10 +109,13 @@ return {
         vim.lsp.enable 'terrafromls'
         vim.lsp.enable 'tofu_ls'
         vim.lsp.enable 'tailwindcss'
+<<<<<<< HEAD
         vim.lsp.enable 'cssls'
         vim.lsp.enable 'somesass_ls'
+=======
         vim.lsp.enable 'yamlls'
         vim.lsp.enable 'pylsp'
+>>>>>>> 40d197a20f637104df5d77c32286371ae1aaeb16
 
         -- CUSTOM CONFIGS
 
