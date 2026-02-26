@@ -70,7 +70,12 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 
 -- Disables autocomments when create newline above or below
-vim.cmd([[autocmd FileType * set formatoptions-=ro]])
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = '*',
+  callback = function()
+    vim.opt_local.formatoptions:remove({ 'r', 'o' })
+  end,
+})
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -112,10 +117,6 @@ vim.api.nvim_create_autocmd('User', {
   pattern = 'GitConflictDetected',
   callback = function()
     vim.notify('Conflict detected in ' .. vim.fn.expand '<afile>')
-    vim.keymap.set('n', 'cww', function()
-      engage.conflict_buster()
-      create_buffer_local_mappings()
-    end)
   end,
 })
 

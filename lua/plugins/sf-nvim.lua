@@ -11,7 +11,7 @@ return {
     require('sf').setup {
 
       -- the folder this plugin uses to store intermediate data. It's under the sf project root directory.
-      -- plugin_folder_name = '~/sf_cache/',
+      plugin_folder_name = '.sf/sf_nvim_cache/',
 
       -- Define what metadata to be listed in `list_md_to_retrieve()` (<leader>ml)
       -- Salesforce has numerous metadata types. We narrow down the scope of `list_md_to_retrieve()`.

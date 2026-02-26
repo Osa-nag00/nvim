@@ -13,10 +13,6 @@ return {
       enable = true,
     },
 
-    vim.filetype.add { pattern = {
-      ['./.cls'] = 'apex',
-    } },
-
     --TODO: figure this out later, I want html to be used for sf email shit
     -- vim.treesitter.language.register('html', { 'email' }),
   },

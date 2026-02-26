@@ -106,7 +106,7 @@ return {
         vim.lsp.enable 'apex_ls'
         vim.lsp.enable 'docker_compose_language_service'
         vim.lsp.enable 'dockerls'
-        vim.lsp.enable 'terrafromls'
+        vim.lsp.enable 'terraformls'
         vim.lsp.enable 'tofu_ls'
         vim.lsp.enable 'tailwindcss'
         vim.lsp.enable 'cssls'
@@ -130,18 +130,19 @@ return {
             vim.bo.filetype = 'html'
           end,
         })
+
+        -- Added for gitlab lsp recognition
+        vim.filetype.add {
+          pattern = {
+            ['%.gitlab%-ci%.ya?ml'] = 'yaml.gitlab',
+          },
+        }
+        vim.filetype.add {
+          pattern = {
+            ['./.cls'] = 'apex',
+          },
+        }
       end,
-      -- Added for gitlab lsp recognition
-      vim.filetype.add {
-        pattern = {
-          ['%.gitlab%-ci%.ya?ml'] = 'yaml.gitlab',
-        },
-      },
-      vim.filetype.add {
-        pattern = {
-          ['./.cls'] = 'apex',
-        },
-      },
     },
   },
 }
