@@ -10,7 +10,7 @@ return {
     } },
     'saadparwaiz1/cmp_luasnip',
   },
-  opts = function()
+  config = function()
     vim.api.nvim_set_hl(0, 'CmpNormal', { bg = '#494d64' })
     local cmp = require 'cmp'
 
@@ -62,7 +62,7 @@ return {
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
     vim.lsp.config('*', {
       capabilities = capabilities,
-      root_markers = { '*' },
+      root_markers = { '.git' },
     })
   end,
 }
