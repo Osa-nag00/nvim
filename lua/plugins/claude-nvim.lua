@@ -18,29 +18,8 @@ return {
       ft = { 'NvimTree', 'neo-tree', 'oil', 'minifiles', 'netrw' },
     },
     -- Diff management
-    {
-      '<leader>aa',
-      function()
-        local diff = require('claudecode.diff')
-        local tab_name = vim.b[vim.api.nvim_get_current_buf()].claudecode_diff_tab_name
-        diff.accept_current_diff()
-        if tab_name then
-          diff.close_diff_by_tab_name(tab_name)
-        end
-      end,
-      desc = 'Accept diff',
-    },
-    {
-      '<leader>ad',
-      function()
-        local diff = require('claudecode.diff')
-        local tab_name = vim.b[vim.api.nvim_get_current_buf()].claudecode_diff_tab_name
-        diff.deny_current_diff()
-        if tab_name then
-          diff.close_diff_by_tab_name(tab_name)
-        end
-      end,
-      desc = 'Deny diff',
-    },
+ -- Diff management
+    { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
+    { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
   },
 }
