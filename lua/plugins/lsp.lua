@@ -113,6 +113,7 @@ return {
         vim.lsp.enable 'somesass_ls'
         vim.lsp.enable 'yamlls'
         vim.lsp.enable 'pylsp'
+        vim.lsp.enable 'clangd'
 
         -- CUSTOM CONFIGS
 

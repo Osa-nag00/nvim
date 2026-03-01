@@ -48,9 +48,15 @@ return {
       javascriptreact = { 'prettierd', stop_after_first = true },
       json = { 'prettierd' },
       rust = { 'rustfmt' },
-      terraform = {'terraform_fmt'},
-      opentofu = {'tofu_fmt'},
-      yaml = {'prettierd'}
+      terraform = { 'terraform_fmt' },
+      opentofu = { 'tofu_fmt' },
+      yaml = { 'prettierd' },
+      c = { 'clang_format' },
+    },
+    formatters = {
+      clang_format = {
+        prepend_args = { '--style=file:/home/onaghise/dotfiles/.clang-format' },
+      },
     },
   },
 }
