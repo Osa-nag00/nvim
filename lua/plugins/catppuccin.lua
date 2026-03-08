@@ -42,7 +42,11 @@ return {
     custom_highlights = {},
     default_integrations = true,
     integrations = {
-      cmp = true,
+      blink_cmp = {
+        style = 'bordered',
+      },
+      blink_indent = true,
+      blink_pairs = true,
       gitsigns = true,
       treesitter = true,
       notify = true,
@@ -50,12 +54,6 @@ return {
         enabled = true,
         indentscope_color = '',
       },
-      indent_blankline = {
-        enabled = true,
-        scope_color = 'macchiato', -- catppuccin color (eg. `lavender`) Default: text
-        colored_indent_levels = false,
-      },
-      dashboard = true,
       telescope = {
         enabled = true,
       },
