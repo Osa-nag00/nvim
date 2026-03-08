@@ -6,6 +6,7 @@ return {
     local lint = require 'lint'
     lint.linters_by_ft = {
       markdown = { 'markdownlint' },
+      shell = { 'shellcheck' },
     }
 
     -- Create autocommand which carries out the actual linting
@@ -22,5 +23,12 @@ return {
         end
       end,
     })
+
+    vim.api.nvim_create_user_command('LintInfo', function()
+      local buf_id = vim.api.nvim_get_current_buf()
+      print(buf_id)
+      print(lint.get_running(buf_id))
+    end, {})
   end,
+
 }

@@ -10,6 +10,7 @@ vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
+vim.g.indent_lines = true
 
 -- Make line numbers default
 vim.opt.number = true
@@ -73,7 +74,7 @@ vim.opt.scrolloff = 10
 vim.api.nvim_create_autocmd('FileType', {
   pattern = '*',
   callback = function()
-    vim.opt_local.formatoptions:remove({ 'r', 'o' })
+    vim.opt_local.formatoptions:remove { 'r', 'o' }
   end,
 })
 
