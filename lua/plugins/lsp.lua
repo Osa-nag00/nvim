@@ -115,7 +115,6 @@ return {
         vim.lsp.enable 'clangd'
 
         -- CUSTOM CONFIGS
-
         vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
           pattern = { 'docker-compose.yaml', 'compose.yaml' },
           callback = function()
