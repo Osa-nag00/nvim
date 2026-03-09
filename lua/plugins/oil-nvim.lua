@@ -18,17 +18,25 @@ return {
   -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
   lazy = false,
 
-  vim.keymap.set('n', '<leader>o', function()
-    local oil = require 'oil'
-    oil.open()
-  end, { desc = '[O]pen Oil' }),
-
-  vim.keymap.set('n', '<leader>oc', function()
-    local oil = require 'oil'
-    if vim.bo.filetype == 'oil' then
-      oil.close {}
-      local bufId = vim.api.nvim_get_current_buf()
-      require('ibl').setup_buffer(bufId, { enabled = false })
-    end
-  end, { desc = '[O]il Close' }),
+  keys = {
+    {
+      '<leader>o',
+      function()
+        require('oil').open()
+      end,
+      desc = '[O]pen Oil',
+    },
+    {
+      '<leader>oc',
+      function()
+        local oil = require 'oil'
+        if vim.bo.filetype == 'oil' then
+          oil.close {}
+          local bufId = vim.api.nvim_get_current_buf()
+          require('ibl').setup_buffer(bufId, { enabled = false })
+        end
+      end,
+      desc = '[O]il Close',
+    },
+  },
 }
