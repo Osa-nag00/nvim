@@ -7,7 +7,7 @@ return {
     lint.linters_by_ft = {
       markdown = { 'markdownlint' },
       shell = { 'shellcheck' },
-      -- lua = {}
+      -- lua = { 'selene' },
     }
 
     -- Create autocommand which carries out the actual linting
@@ -26,8 +26,12 @@ return {
     })
 
     -- vim.api.nvim_create_user_command('LintInfo', function()
-    --   local buf_id = vim.api.nvim_get_current_buf()
-    --   local lint = require 'lint'
+    --   local running = lint.get_running()
+    --   if #running == 0 then
+    --     vim.notify('No linters running', vim.log.levels.INFO)
+    --   else
+    --     vim.notify('Running linters: ' .. table.concat(running, ', '), vim.log.levels.INFO)
+    --   end
     -- end, {})
   end,
 }
