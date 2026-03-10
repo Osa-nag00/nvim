@@ -7,6 +7,8 @@ return {
     lint.linters_by_ft = {
       markdown = { 'markdownlint' },
       shell = { 'shellcheck' },
+      -- terraform = { 'terraform' },
+      -- yaml = { 'yamllint' },
       -- lua = { 'selene' },
     }
 

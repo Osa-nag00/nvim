@@ -29,8 +29,8 @@ vim.schedule(function()
 end)
 
 -- since I'm using oil.nvim, netrw needs to be completely disabled
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1
 
 -- Enable break indent
 vim.opt.breakindent = true
