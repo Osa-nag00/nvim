@@ -1,7 +1,7 @@
 local printTargetOrg = function()
   local sf = require 'sf'
   local target_org = sf.get_target_org()
-  return '[[' .. (target_org or 'No Target Org Set') .. ']]'
+  return '[[' .. (target_org or 'No Org Set') .. ']]'
 end
 
 return {

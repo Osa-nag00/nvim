@@ -10,6 +10,7 @@ vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
+vim.g.indent_lines = true
 
 -- Make line numbers default
 vim.opt.number = true
@@ -27,9 +28,9 @@ vim.schedule(function()
   vim.opt.clipboard = 'unnamedplus'
 end)
 
--- since I'm using nvim-tree, netrw needs to be completely disabled
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+-- since I'm using oil.nvim, netrw needs to be completely disabled
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1
 
 -- Enable break indent
 vim.opt.breakindent = true
@@ -73,7 +74,7 @@ vim.opt.scrolloff = 10
 vim.api.nvim_create_autocmd('FileType', {
   pattern = '*',
   callback = function()
-    vim.opt_local.formatoptions:remove({ 'r', 'o' })
+    vim.opt_local.formatoptions:remove { 'r', 'o' }
   end,
 })
 
@@ -83,6 +84,10 @@ vim.api.nvim_create_autocmd('FileType', {
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+
+-- Center cursor after half-page scroll
+vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Center cursor after moving down half-page' })
+vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Center cursor after moving up half-page' })
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
