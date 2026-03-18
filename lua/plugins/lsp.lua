@@ -12,6 +12,9 @@ return {
       },
     }
 
+    -- exception that needs to be made for apex ls, mason and lspconfig don't play nice with it
+    vim.lsp.enable 'apex_ls'
+
     vim.api.nvim_create_autocmd('LspAttach', {
       callback = function(event)
         local builtin = require 'telescope.builtin'
