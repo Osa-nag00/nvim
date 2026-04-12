@@ -13,7 +13,5 @@ return {
       enable = true,
     },
 
-    --TODO: figure this out later, I want html to be used for sf email shit
-    -- vim.treesitter.language.register('html', { 'email' }),
   },
 }
