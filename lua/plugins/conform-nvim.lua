@@ -52,6 +52,7 @@ return {
       opentofu = { 'tofu_fmt' },
       yaml = { 'prettierd' },
       c = { 'clang_format' },
+      tex = {'tex-fmt'}
     },
     formatters = {
       clang_format = {
