@@ -1,4 +1,5 @@
-return {
-  'max397574/better-escape.nvim',
-  opts = {},
-}
+return {}
+-- return {
+--   'max397574/better-escape.nvim',
+--   opts = {},
+-- }
