@@ -1,30 +1,32 @@
-return {
-  'stevearc/oil.nvim',
-  ---@module 'oil'
-  ---@type oil.SetupOpts
-  opts = {
-    default_file_explorer = true,
-    keymaps = {
-      ['<C-s>'] = false, -- disable splitting vertically
-      ['<C-h>'] = false, -- disable splitting horizontally
-      ['<C-l>'] = false, -- disable splitting refresh on ctrl-l
-      ['<C-r>'] = 'actions.refresh',
-      ['yp'] = 'actions.yank_entry',
-    },
-    columns = { 'size', 'icon' },
-  },
-  -- Optional dependencies
-  dependencies = { 'nvim-tree/nvim-web-devicons', 'benomahony/oil-git.nvim' }, -- use if you prefer nvim-web-devicons
-  -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
-  lazy = false,
-
-  keys = {
-    {
-      '<leader>o',
-      function()
-        require('oil').open()
-      end,
-      desc = '[O]pen Oil',
-    },
-  },
-}
+return {}
+-- return {
+--   'stevearc/oil.nvim',
+--   ---@module 'oil'
+--   ---@type oil.SetupOpts
+--
+--   opts = {
+--     default_file_explorer = true,
+--     keymaps = {
+--       ['<C-s>'] = false, -- disable splitting vertically
+--       ['<C-h>'] = false, -- disable splitting horizontally
+--       ['<C-l>'] = false, -- disable splitting refresh on ctrl-l
+--       ['<C-r>'] = 'actions.refresh',
+--       ['yp'] = 'actions.yank_entry',
+--     },
+--     columns = { 'size', 'icon' },
+--   },
+--   -- Optional dependencies
+--   dependencies = { 'nvim-tree/nvim-web-devicons', 'benomahony/oil-git.nvim' }, -- use if you prefer nvim-web-devicons
+--   -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+--   lazy = false,
+--
+--   keys = {
+--     {
+--       '<leader>o',
+--       function()
+--         require('oil').open()
+--       end,
+--       desc = '[O]pen Oil',
+--     },
+--   },
+-- }
