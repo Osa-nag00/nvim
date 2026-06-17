@@ -141,6 +141,7 @@ require('lazy').setup({
 
   -- importing directory with custom plugins
   { import = 'plugins' },
+  { import = 'debugger-configs' },
 }, {
   ui = {
     icons = vim.g.have_nerd_font and {},
