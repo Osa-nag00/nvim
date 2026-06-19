@@ -45,6 +45,32 @@ return {
           resolveSourceMapLocations = { '${workspaceFolder}/**', '!**/node_modules/**' },
         },
         {
+          -- For standalone ts-node CLI scripts (e.g. commander commands that call
+          -- program.parse(process.argv) at the top level, like the pcsa dsf2 tools).
+          -- Runs the current .ts file via the project-local ts-node, from the file's
+          -- own project root, and prompts for the subcommand + flags to pass.
+          type = 'pwa-node',
+          request = 'launch',
+          name = 'Launch ts-node CLI (prompt args)',
+          runtimeExecutable = 'node',
+          runtimeArgs = { '-r', 'ts-node/register' },
+          program = '${file}',
+          -- cwd = the nearest dir containing package.json/tsconfig.json above the file,
+          -- so ts-node resolves the right tsconfig and node_modules (not nvim's cwd).
+          cwd = function()
+            local file = vim.fn.expand('%:p')
+            return vim.fs.root(file, { 'tsconfig.json', 'package.json' }) or vim.fn.getcwd()
+          end,
+          -- Prompt for args each run, e.g. "createuser --target-org scratch-org -f data/x.csv -s scratch -d com"
+          args = function()
+            local input = vim.fn.input('CLI args: ')
+            return vim.split(input, ' ', { trimempty = true })
+          end,
+          console = 'integratedTerminal',
+          skipFiles = { '<node_internals>/**', 'node_modules/**' },
+          sourceMaps = true,
+        },
+        {
           type = 'pwa-node',
           request = 'attach',
           name = 'Attach',
