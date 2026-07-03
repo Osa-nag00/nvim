@@ -37,6 +37,9 @@ return {
     --   }
     -- end,
     formatters_by_ft = {
+      zsh = { 'shfmt' },
+      bash = { 'shfmt' },
+      sh = { 'shfmt' },
       lua = { 'stylua' },
       python = { 'black' },
       html = { 'prettierd' },
@@ -52,7 +55,7 @@ return {
       opentofu = { 'tofu_fmt' },
       yaml = { 'prettierd' },
       c = { 'clang_format' },
-      tex = {'tex-fmt'}
+      tex = { 'tex-fmt' },
     },
     formatters = {
       clang_format = {
