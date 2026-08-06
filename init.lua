@@ -33,6 +33,10 @@ end)
 
 -- Enable break indent
 vim.opt.breakindent = true
+vim.opt.autoindent = true
+vim.opt.copyindent = true
+vim.opt.preserveindent = true
+vim.opt.smartindent = false
 
 -- Save undo history
 vim.opt.undofile = true

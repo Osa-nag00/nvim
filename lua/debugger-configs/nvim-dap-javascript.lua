@@ -69,6 +69,7 @@ return {
           console = 'integratedTerminal',
           skipFiles = { '<node_internals>/**', 'node_modules/**' },
           sourceMaps = true,
+          resolveSourceMapLocations = { '${workspaceFolder}/**', '!**/node_modules/**' },
         },
         {
           type = 'pwa-node',
