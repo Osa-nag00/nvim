@@ -2,6 +2,10 @@ return {
   'nvim-treesitter/nvim-treesitter',
   lazy = false,
   build = ':TSUpdate',
+  init = function()
+    vim.treesitter.language.register('terraform', 'terraform-vars')
+    vim.treesitter.language.register('terraform', 'tfvars')
+  end,
   opts = {
     ensure_installed = {
       'bash',
@@ -26,6 +30,7 @@ return {
       'query',
       'regex',
       'sql',
+      'terraform',
       'toml',
       'tsx',
       'typescript',
