@@ -12,6 +12,13 @@ return {
       },
     }
 
+    if not vim.env.JAVA_HOME then
+      local sdkman_java_home = vim.fn.expand '~/.sdkman/candidates/java/current'
+      if vim.fn.executable(sdkman_java_home .. '/bin/java') == 1 then
+        vim.env.JAVA_HOME = sdkman_java_home
+      end
+    end
+
     -- exception that needs to be made for apex ls, mason and lspconfig don't play nice with it
     vim.lsp.enable 'apex_ls'
 
