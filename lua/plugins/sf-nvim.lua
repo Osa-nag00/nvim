@@ -63,6 +63,10 @@ return {
     }
 
     local Sf = require 'sf'
+    require('sf.sub.config_user_command').sub_cmd_tbl.currentFile.funcs.dryPush = function()
+      Sf.save_and_push('--dry-run')
+    end
+
     vim.keymap.set('n', '<leader>stt', Sf.toggle_term, { desc = 'Toggle sf integrated terminal' })
     vim.keymap.set('n', '<leader>ml', Sf.list_md_to_retrieve, { desc = 'List metadata to retrieve' })
     vim.keymap.set('n', '<leader>mt', Sf.list_md_type_to_retrieve, { desc = 'List metadata types to retrieve' })
