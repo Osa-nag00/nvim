@@ -156,10 +156,4 @@ require('lazy').setup({
 })
 
 vim.cmd.colorscheme 'catppuccin'
-vim.g.doge_doc_standard_python = 'google'
 
--- activate tree sitter hightlighting autcommand for every file
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = { '<filetype>' },
-  callback = function() vim.treesitter.start() end,
-})
