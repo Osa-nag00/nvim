@@ -18,7 +18,6 @@ return {
   ---@type YaziConfig | {}
   opts = {
     -- if you want to open yazi instead of netrw, see below for more info
-    open_for_directories = true,
     keymaps = {
       show_help = '<f1>',
     },
@@ -29,5 +28,14 @@ return {
     --
     -- More details: https://github.com/mikavilpas/yazi.nvim/issues/802
     vim.g.loaded_netrwPlugin = 1
+
+    vim.api.nvim_create_autocmd('UIEnter', {
+      callback = function()
+        require('yazi').setup {
+          open_for_directories = true,
+        }
+      end,
+    })
+
   end,
 }
