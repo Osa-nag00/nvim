@@ -59,7 +59,7 @@ return {
     },
     formatters = {
       clang_format = {
-        prepend_args = { '--style=file:/home/onaghise/dotfiles/.clang-format' },
+        prepend_args = { '--style=file' },
       },
     },
   },
