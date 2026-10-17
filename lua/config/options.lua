@@ -24,6 +24,11 @@ vim.opt.copyindent = true
 vim.opt.preserveindent = true
 vim.opt.smartindent = false
 
+vim.opt.expandtab = true    -- use spaces instead of tab characters
+vim.opt.tabstop = 4         -- a tab counts as 4 spaces
+vim.opt.softtabstop = 4     -- pressing Tab inserts 4 spaces
+vim.opt.shiftwidth = 4      -- auto-indent uses 4 spaces
+
 vim.opt.undofile = true
 
 vim.opt.ignorecase = true
