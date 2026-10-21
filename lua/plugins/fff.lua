@@ -1,6 +1,7 @@
 return -- Package name changed from `fff.nvim` to `fff`. If you installed fff.nvim before, clean with `:Lazy clean`
 {
   'dmtrKovalenko/fff',
+  version = '0.11.0',
   build = function()
     -- downloads a prebuilt binary or falls back to cargo build
     require('fff.download').download_or_build_binary()
