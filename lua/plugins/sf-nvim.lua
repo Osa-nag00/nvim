@@ -4,12 +4,13 @@ return {
   dependencies = {
     'nvim-treesitter/nvim-treesitter',
     'ibhagwan/fzf-lua', -- no need if you don't use listing metadata feature
-    -- 'stevearc/overseer.nvim',
+    'stevearc/overseer.nvim',
   },
 
   config = function()
     require('sf').setup {
 
+	terminal = 'overseer',
       -- the folder this plugin uses to store intermediate data. It's under the sf project root directory.
       plugin_folder_name = '.sf/sf_nvim_cache/',
 
