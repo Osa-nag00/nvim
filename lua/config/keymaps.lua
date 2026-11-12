@@ -11,7 +11,17 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Center cursor after moving up 
 vim.api.nvim_create_user_command('W', 'w', { bang = true })
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set('n', '<leader>q', function()
+  vim.diagnostic.setloclist {
+    format = function(diagnostic)
+      local namespace = vim.diagnostic.get_namespace(diagnostic.namespace)
+      if namespace.name:find('nvim.lsp.typos_lsp.', 1, true) then
+        return nil
+      end
+      return diagnostic.message
+    end,
+  }
+end, { desc = 'Open diagnostic list without typos' })
 
 -- Exit terminal mode shortcut
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
